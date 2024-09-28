@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Zy-Element",
   description: "高仿ElementPlus组件库",
+  base: "/zy-element/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
