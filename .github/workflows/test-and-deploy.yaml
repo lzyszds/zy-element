@@ -5,8 +5,6 @@ on:
     branches:
       - master
 
-  workflow_dispatch:
-
 jobs:
   test:
     name: Run Lint and Test
@@ -46,9 +44,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build component
-        run: npm run build
-
       - name: Build docs
         run: npm run docs:build
 
@@ -71,5 +66,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.TOKENS_KEY  }}
+          github_token: ${{ secrets.TOKENS_KEY }}
           publish_dir: .
