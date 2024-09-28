@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm --filter @zy-element/play dev",
-    "dev:docs": "pnpm --filter @zy-element/docs dev",
-    "build:docs": "pnpm --filter @zy-element/docs build",
+    "docs:dev": "pnpm --filter @zy-element/docs dev",
+    "docs:build": "pnpm --filter @zy-element/docs build",
     "test": "run-s test-utils test-hooks test-comp",
     "test-comp": "cross-env NODE_ENV=test pnpm --filter @toy-element/components test",
     "test-utils": "cross-env NODE_ENV=test pnpm --filter @toy-element/utils test",
