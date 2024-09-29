@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import type { ButtonProps, ButtonEimts, ButtonInstance } from "./types";
 import { throttle } from "lodash-es";
+import { ZyIcon } from "zy-element";
 const btnRef = ref<HTMLButtonElement | null>(null);
 
 /**
@@ -32,8 +33,15 @@ defineExpose<ButtonInstance>({
   ref: btnRef,
 });
 
-const handleOnClick = (e: MouseEvent) => emits("click", e);
+const handleOnClick = (e: MouseEvent) => {
+  console.log(`lzy  e:`, e);
+  emits("click", e);
+};
 const handleBtnClickThrough = throttle(handleOnClick, props.throttleDelay);
+
+const iconStyle = computed(() => ({
+  marginRight: slots.default ? "6px" : "0px",
+}));
 </script>
 
 <template>
@@ -54,8 +62,15 @@ const handleBtnClickThrough = throttle(handleOnClick, props.throttleDelay);
     ]"
     :type="tag === 'button' ? nativeType : void 0"
     :disabled="disabled || loading ? true : void 0"
-    @click="useThrottle ? handleBtnClickThrough : handleOnClick"
+    :autofocus="autofocus"
+    @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrough(e) : handleOnClick(e)"
   >
+    <template v-if="loading">
+      <slot name="loading">
+        <ZyIcon :icon="loadingIcon ?? 'zy-bubble-loading'" :style="iconStyle"></ZyIcon>
+      </slot>
+    </template>
+    <ZyIcon :icon="icon" :style="iconStyle" v-if="icon && !loading"></ZyIcon>
     <slot></slot>
   </component>
 </template>

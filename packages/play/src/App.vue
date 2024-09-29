@@ -1,7 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ZyIcon } from "@zy-element/components/Icon";
+</script>
 
 <template>
-  <zy-button type="primary"> 你好 </zy-button>
+  <zy-button :loading="true" type="primary"> 你好 </zy-button>
+  <ZyIcon icon="zy:adobe-after-effects" spin color="qw" :speedspin="6" />
 </template>
 
 <style scoped>

@@ -5,12 +5,13 @@ import { fn } from "@storybook/test"
 import { ZyButton } from 'zy-element';
 
 
-type Story = StoryObj<typeof ZyButton> & { argtypes: ArgTypes }
+type Story = StoryObj<typeof ZyButton> & { argTypes: ArgTypes }
 
 
 const meta: Meta<typeof ZyButton> = {
-  title: 'Button',
+  title: 'Example/Button',
   component: ZyButton,
+  tags: ['autodocs'],
   argTypes: {
     type: {
       options: ['primary', 'success', 'warning', 'danger', 'info'],
@@ -71,43 +72,25 @@ const container = (val: string) => `
 
 export const Default: Story & { args: { content: string } } = {
   argTypes: {
-    groupType: {
-      control: { type: "select" },
-      options: ["primary", "success", "warning", "danger", "info", ""],
-    },
-    groupSize: {
-      control: { type: "select" },
-      options: ["large", "default", "small", ""],
-    },
-    groupDisabled: {
-      control: "boolean",
-    },
-    content1: {
-      control: { type: "text" },
-      defaultValue: "Button1",
-    },
-    content2: {
-      control: { type: "text" },
-      defaultValue: "Button2",
-    },
+    content: {
+      control: { type: 'text' }
+    }
   },
   args: {
-    round: true,
-    content1: "Button1",
-    content2: "Button2",
+    type: 'primary',
+    content: 'Button'
   },
   render: (args) => ({
-    components: { ErButton, ErButtonGroup },
+    components: { ZyButton },
     setup() {
-      return { args };
+      return { args }
     },
+
     template: container(`
-       <er-button-group :type="args.groupType" :size="args.groupSize" :disabled="args.groupDisabled">
-         <er-button v-bind="args">{{args.content1}}</er-button>
-         <er-button v-bind="args">{{args.content2}}</er-button>
-       </er-button-group>
-    `),
-  }),
+      <zy-button v-bind='args'>{{ args.content }}</zy-button>
+    `)
 
-
+  })
 }
+
+export default meta

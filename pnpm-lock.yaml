@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@iconify-json/eos-icons':
+        specifier: ^1.2.0
+        version: 1.2.0
+      '@iconify-json/iconoir':
+        specifier: ^1.2.1
+        version: 1.2.1
+      '@iconify/vue':
+        specifier: ^4.1.1
+        version: 4.1.2(vue@3.5.10(typescript@5.6.2))
       '@zy-element/components':
         specifier: workspace:*
         version: link:packages/components
@@ -518,6 +527,20 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@iconify-json/eos-icons@1.2.0':
+    resolution: {integrity: sha512-grdfoS20Z4gWAzNPza7ytguNBWeTOkx4Y6aZHs149t2Z6AhW7zG3VWkkq6M+YuL2G8ugHnBw7ZxgazZ6oiMnIQ==}
+
+  '@iconify-json/iconoir@1.2.1':
+    resolution: {integrity: sha512-x55gpORwMGkmmT9UO11rzfMOp40k0ggQnPiOoh9axbyuHrkFMN7pdoCbaXkzqAdShcoI1dLzARbdqXi2sAPJXQ==}
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+
+  '@iconify/vue@4.1.2':
+    resolution: {integrity: sha512-CQnYqLiQD5LOAaXhBrmj1mdL2/NCJvwcC4jtW2Z8ukhThiFkLDkutarTOV2trfc9EXqUqRs0KqXOL9pZ/IyysA==}
+    peerDependencies:
+      vue: '>=3'
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -3657,6 +3680,21 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@iconify-json/eos-icons@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/iconoir@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/types@2.0.0': {}
+
+  '@iconify/vue@4.1.2(vue@3.5.10(typescript@5.6.2))':
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.5.10(typescript@5.6.2)
 
   '@isaacs/cliui@8.0.2':
     dependencies:

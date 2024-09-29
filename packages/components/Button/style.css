@@ -36,7 +36,7 @@
   background-color: var(--zy-button-bg-color);
   border: var(--zy-border);
   border-color: var(--zy-button-border-color);
-  padding: 8px 15px;
+  padding: 8px 10px;
   font-size: var(--zy-font-size-base);
   border-radius: var(--zy-border-radius-base);
   & + & {

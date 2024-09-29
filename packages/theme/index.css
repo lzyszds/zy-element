@@ -72,4 +72,9 @@
   /*animation*/
   --zy-transition-duration: 0.4s;
   --zy-transition-duration-fast: 0.2s;
+
+  /* speed */
+  --zy-speed-default: 0.3s;
+  --zy-speed-fast: 0.1s;
+  --zy-speed-slow: 1s;
 }
