@@ -1,15 +1,13 @@
-<script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <zy-button> lzyu </zy-button>
+  <zy-button type="primary"> 你好 </zy-button>
 </template>
 
 <style scoped>
 .logo {
   height: 6em;
-  padding: 1.5em;
+  padding: 1.2em;
   will-change: filter;
   transition: filter 300ms;
 }

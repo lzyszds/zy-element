@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import type { ButtonProps, ButtonEimts, ButtonInstance } from "./types";
+import { throttle } from "lodash-es";
+const btnRef = ref<HTMLButtonElement | null>(null);
+
 /**
  * Button.vue 是一个简单的按钮组件
  * Button.test.ts 是 Button.vue 的测试文件
@@ -10,11 +15,51 @@
 defineOptions({
   name: "ZyButton",
 });
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  type: "primary",
+  size: "default",
+  nativeType: "button",
+  tag: "button",
+  useThrottle: true,
+  throttleDelay: 500,
+});
+const slots = defineSlots();
+
+const emits = defineEmits<ButtonEimts>();
+
+defineExpose<ButtonInstance>({
+  ref: btnRef,
+});
+
+const handleOnClick = (e: MouseEvent) => emits("click", e);
+const handleBtnClickThrough = throttle(handleOnClick, props.throttleDelay);
 </script>
 
 <template>
-  <button style="background-color: #409eff; color: #fff">
-    <span>加载中</span>
+  <component
+    :is="props.tag"
+    ref="btnRef"
+    :class="[
+      'zy-button',
+      `zy-button--${type}`,
+      `zy-button--${size}`,
+      {
+        'is-plain': plain,
+        'is-round': round,
+        'is-disabled': disabled,
+        'is-loading': loading,
+        'is-circle': circle,
+      },
+    ]"
+    :type="tag === 'button' ? nativeType : void 0"
+    :disabled="disabled || loading ? true : void 0"
+    @click="useThrottle ? handleBtnClickThrough : handleOnClick"
+  >
     <slot></slot>
-  </button>
+  </component>
 </template>
+
+<style scoped>
+@import "./style.css";
+</style>
